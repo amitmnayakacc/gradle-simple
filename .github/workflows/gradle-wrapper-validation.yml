@@ -24,3 +24,10 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: test
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.3
+        with:
+          paths: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
